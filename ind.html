@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="ind.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+   overflow: hidden;
+}
+.box .textinput{
+    /* margin: 23px;
+    t
+    width: 100px;
+    height: 60px;
+    border-radius: 10px;
+     */
+
+}
+
+.hello {
+    display: flex;
+    justify-content: space-between;
+    padding-left: -10px;
+}
+
+.box {
+    background-color: blue;
+    width: 700px;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 42px;
+  
+    border-radius: 2%;
+}
+
+
+.box2{
+    background-color: rgb(125, 20, 125);
+    width: 1500px;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 42px;
+  
+    border-radius: 0.5%;
+}
+.pos, .pos1 {
+    width: 100px;
+    position: relative;
+    height: 60px;
+    border-radius: 10px;
+    background-color: orange;
+}
+.pos2 {
+    width: 100px;
+    height: 60px;
+    border-radius: 10px;
+    background-color: orange;
+   
+    margin-left: 24%;
+   padding-top: 0px;
+    
+}
+.pos3 {
+    width: 100px;
+    height: 60px;
+    border-radius: 10px;
+    background-color: orange;
+   
+    margin-left: 2%;
+   padding-top: 0px;
+    
+}
+
+
+
+.box2 {
+    margin-left: auto;
+}
+/* Add styles for labels */
+.box label {
+    color: white; /* Adjust the label color as needed */
+    margin-bottom: 10px; /* Add space below labels */
+}
+
+
+.box2 {
+    margin-left: auto;
+    position: relative;
+}
+ 
+/* #output {
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 80px;
+    height: 60px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    border: 2px solid rgb(0, 0, 0);
+    box-shadow: 5px 5px 5px rgb(0, 0, 0);
+} */
+
+.box2 #output {
+    margin-left: -2px;
+    width: 300px;
+    height: 300px; 
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    border: 2px solid rgb(0, 0, 0);
+    box-shadow: 5px 5px 5px rgb(0, 0, 0);
+}
+
+.box2 img {
+    align-items: center;
+    margin-top: 100px;
+    width: 90vh;
+    height: 50vh;
+    margin-right: 20px;
+   object-fit: cover;
+}
+ 
+ 
+    </style>
+</head>
+<body>
+    <div class="hello">
+        <div class="box">
+            <input class="textinput" type="text" id="textInput" placeholder="Enter text">
+            <button type="button" class="pos" onclick="addText()">Text</button>
+            <input type="file" id="imageInput" accept="image/*" onchange="previewImage()">
+            <button type="button" class="pos1" onclick="addImage()">Image</button>
+
+        </div>
+    
+        <div class="box2">
+            <button type="button" class="clear-btn pos3" onclick="clearContent()">Clear All</button>
+            <div id="output" class=""></div>
+
+            <button type="button" class="pos2" onclick="saveContent()">SAVE</button>
+
+            
+        </div>
+
+        <script>
+            // function addText() {
+//     var textInput = document.getElementById('textInput').value;
+//     document.getElementById('output').innerHTML += '<p>' + textInput + '</p>';
+// }
+
+// function previewImage() {
+//     var input = document.getElementById('imageInput');
+//     var file = input.files[0];
+//     var reader = new FileReader();
+
+//     reader.onload = function(e) {
+//         document.getElementById('output').innerHTML += '<img src="' + e.target.result + '" alt="Uploaded Image">';
+//     };
+
+//     reader.readAsDataURL(file);
+// }
+
+// function addImage() {
+//     var imageInput = document.getElementById('imageInput').files[0];
+//     var reader = new FileReader();
+
+//     reader.onload = function(e) {
+//         document.getElementById('output').innerHTML += '<img src="' + e.target.result + '" alt="Uploaded Image">';
+//     };
+
+//     reader.readAsDataURL(imageInput);
+// }
+
+// function editContent(editButton) {
+//     var contentItem = editButton.parentElement;
+//     var updatedContent = prompt("Edit content:", contentItem.firstChild.nodeValue);
+    
+//     if (updatedContent !== null) {
+//         contentItem.firstChild.nodeValue = updatedContent;
+//     }
+// }
+
+// function clearContent() {
+//     document.getElementById('output').innerHTML = '';
+// }
+
+// Function to add text to the output and save in localStorage
+function addText() {
+    var textInput = document.getElementById('textInput').value;
+    document.getElementById('output').innerHTML += '<p>' + textInput + '</p>';
+    saveToLocalStorage();
+}
+
+// Function to preview image and save in localStorage
+function previewImage() {
+    var input = document.getElementById('imageInput');
+    var file = input.files[0];
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+        document.getElementById('output').innerHTML += '<img src="' + e.target.result + '" alt="Uploaded Image">';
+        saveToLocalStorage();
+    };
+
+    reader.readAsDataURL(file);
+}
+
+// Function to add image and save in localStorage
+function addImage() {
+    var imageInput = document.getElementById('imageInput').files[0];
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+        document.getElementById('output').innerHTML += '<img src="' + e.target.result + '" alt="Uploaded Image">';
+        saveToLocalStorage();
+    };
+
+    reader.readAsDataURL(imageInput);
+}
+
+// Function to edit content and save in localStorage
+function editContent(editButton) {
+    var contentItem = editButton.parentElement;
+    var updatedContent = prompt("Edit content:", contentItem.firstChild.nodeValue);
+
+    if (updatedContent !== null) {
+        contentItem.firstChild.nodeValue = updatedContent;
+        saveToLocalStorage();
+    }
+}
+
+// Function to clear content and save in localStorage
+function clearContent() {
+    document.getElementById('output').innerHTML = '';
+    saveToLocalStorage();
+}
+function saveContent() {
+    // Get the current content
+    var content = document.getElementById('output').innerHTML;
+
+    // Save the content to localStorage
+    localStorage.setItem('savedContent', content);
+
+    // Optionally, you can display an alert or perform any other action to indicate that the content is saved
+    alert('Content saved to localStorage!');
+}
+
+// Function to save the current content to localStorage
+function saveToLocalStorage() {
+    var content = document.getElementById('output').innerHTML;
+    localStorage.setItem('savedContent', content);
+}
+
+// Function to load content from localStorage
+function loadFromLocalStorage() {
+    var savedContent = localStorage.getItem('savedContent');
+    if (savedContent) {
+        document.getElementById('output').innerHTML = savedContent;
+    }
+}
+
+// Call loadFromLocalStorage when the page loads
+window.onload = loadFromLocalStorage;
+
+        </script>
+
+        <!-- <div id="output"></div> -->
+</div>
+</body>
+</html>
